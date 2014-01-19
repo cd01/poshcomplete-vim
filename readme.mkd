@@ -1,0 +1,13 @@
+#poshcomplete-vim
+
+* omnifunc for PowerShell in Vim
+
+## Usage
+
+```vim
+autocmd FileType ps1 :setl omnifunc=poshcomplete#CompleteCommand
+```
+
+## Licence
+
+MIT
