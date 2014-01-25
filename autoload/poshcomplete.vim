@@ -1,20 +1,26 @@
-" TODO: convert from return string to dictionary is very slow? (use if_lua?
-
 let s:script_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
 function! poshcomplete#CompleteCommand(findstart, base)
+  let s:l = getline('.')
+
   if a:findstart
     let line = getline('.')
     let start = col('.') - 1
 
-    while start > 0 && (line[start - 1] =~ '\a' || line[start - 1] =~ '-') " TODO: hyphen only?
+    while start > 0 && (line[start - 1] =~ '\a' || line[start - 1] =~ '-')
       let start -= 1
     endwhile
 
     return start
   else
+    let currentline = getline('.') . a:base
     let res = []
-    let completionwords = eval(system("powershell -Command \"" . fnameescape(s:script_path)  . "\\..\\completions.ps1\" \"" . a:base . "\""))
+
+    if currentline == ''
+        return []
+    endif
+    
+    let completionwords = eval(system("powershell -NoProfile -ExecutionPolicy unrestricted -Command \"" . fnameescape(s:script_path)  . "\\..\\completions.ps1 '" . currentline . "'\""))
 
     for completionword in completionwords
       call add(res, completionword)
@@ -23,3 +29,4 @@ function! poshcomplete#CompleteCommand(findstart, base)
     return res
   endif
 endfunction
+
