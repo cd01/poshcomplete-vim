@@ -1,8 +1,6 @@
 let s:script_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
 function! poshcomplete#CompleteCommand(findstart, base)
-  let s:l = getline('.')
-
   if a:findstart
     let line = getline('.')
     let start = col('.') - 1
