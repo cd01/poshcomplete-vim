@@ -11,7 +11,7 @@ function! poshcomplete#CompleteCommand(findstart, base)
 
     return start
   else
-    let currentline = getline('.') . a:base
+    let currentline = getline('.') . substitute(a:base, "[0]$", "-", "") " Bacause dash is replaced by zero
     let res = []
 
     if currentline == ''
