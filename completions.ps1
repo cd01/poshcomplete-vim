@@ -1,13 +1,10 @@
-﻿
-
-if ($args[0] -ne $null) {
+﻿if ($args[0] -ne $null) {
     $inputText = $args[0].ToString()
 
     Write-Host "[" -NoNewline
 
     # better to sort?
     $completeWords = [System.Management.Automation.CommandCompletion]::CompleteInput($inputText, $inputText.Length, $null).CompletionMatches | Select-Object CompletionText, ResultType, ToolTip
-    $cntCompleteWords = $completeWords.Count
 
     foreach ($completeWord in $completeWords)
     {
