@@ -8,6 +8,11 @@
 autocmd FileType ps1 :setl omnifunc=poshcomplete#CompleteCommand
 ```
 
+## ScreenShots
+
+![cmdlet](http://cdn-ak.f.st-hatena.com/images/fotolife/c/cd01/20140127/20140127000414.png?1390748883)
+![option](http://cdn-ak.f.st-hatena.com/images/fotolife/c/cd01/20140127/20140127000415.png?1390748884)
+
 ## Licence
 
 MIT
