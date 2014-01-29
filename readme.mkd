@@ -1,15 +1,24 @@
-#poshcomplete-vim
+# poshcomplete-vim
 
 omnifunc for PowerShell in Vim
 
-![](http://gifzo.net/BVFaroOrqAx.gif)
+![screencast](http://gifzo.net/BVFaroOrqAx.gif)
+
+
+## Installation
+
+* Copy `poshcomplete-vim` to your plugin directory
+* Add `autocmd FileType ps1 :setl omnifunc=poshcomplete#CompleteCommand` in your `_vimrc`
 
 
 ## Usage
 
-```vim
-autocmd FileType ps1 :setl omnifunc=poshcomplete#CompleteCommand
-```
+foobar`<C-X>``<C-O>`
+
+
+## Requirements
+
+* .NET Framework
 
 
 ## Licence
