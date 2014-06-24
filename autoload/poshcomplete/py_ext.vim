@@ -10,7 +10,9 @@ EOF
 endfunction
 
 function! poshcomplete#py_ext#complete(line)
-    python getcandidates.complete(vim.eval("a:line"))
+    let line = matchstr(a:line, '\S\+$')
+    echo line
+    python getcandidates.complete(vim.eval("line"))
     return []
 endfunction
 
