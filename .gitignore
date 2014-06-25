@@ -1,1 +1,4 @@
 *.pyc
+PoshComplete/*.suo
+PoshComplete/PoshComplete/bin
+PoshComplete/PoshComplete/obj
