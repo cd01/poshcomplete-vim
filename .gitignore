@@ -2,3 +2,6 @@
 PoshComplete/*.suo
 PoshComplete/PoshComplete/bin
 PoshComplete/PoshComplete/obj
+PoshComplete/packages/*
+!PoshComplete/packages/repositories.config
+
