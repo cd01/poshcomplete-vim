@@ -10,6 +10,17 @@ omnifunc for PowerShell in Vim
 * Copy `poshcomplete-vim` to your plugin directory
 * Add `autocmd FileType ps1 :setl omnifunc=poshcomplete#CompleteCommand` in your `_vimrc`
 
+### with NeoBundle
+
+``` viml
+NeoBundleLazy 'cd01/poshcomplete-vim', {
+\   'autoload': {'filetypes': ['ps1']},
+\   'build': {
+\     'windows': 'MSBuild PoshComplete/PoshComplete/PoshComplete.csproj /p:Platform="Any CPU"'
+\   }
+\ }
+```
+
 
 ## Usage
 
@@ -18,7 +29,12 @@ foobar`<C-X>``<C-O>`
 
 ## Requirements
 
-* .NET Framework
+* Windows
+* Python 2.x
+
+``` viml
+echo has('python')
+```
 
 
 ## Licence
