@@ -40,14 +40,14 @@ configuration: Release
 
 # scripts to run before build
 before_build:
-  - cmd: nuget install PoshComplete/PoshComplete/packages.config
+  - cmd: nuget restore PoshComplete/PoshComplete.sln
 
 # scripts to run after build
 # after_build:
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
-  - cmd: cd PoshComplete/PoshComplete && msbuild PoshComplete.csproj /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - cmd: msbuild "PoshComplete/PoshComplete.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 # to disable automatic builds
 #build: off
