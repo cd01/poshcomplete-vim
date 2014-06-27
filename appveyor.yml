@@ -1,0 +1,78 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# version format
+version: 1.0.{build}
+
+# branches to build
+branches:
+  # whitelist
+  only:
+    # - master
+    - if_py2
+
+  # blacklist
+  except:
+    - gh-pages
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Operating system (build VM template)
+os: Windows Server 2012
+
+# scripts that are called at very beginning, before repo cloning
+init:
+  - git config --global core.autocrlf input
+
+# clone directory
+clone_folder: c:\projects\poshcomplete-vim
+
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+platform: AnyCPU
+configuration: Release
+
+# scripts to run before build
+before_build:
+  - cmd: nuget install PoshComplete/PoshComplete/packages.config
+
+# scripts to run after build
+# after_build:
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+  - cmd: cd PoshComplete/PoshComplete && msbuild PoshComplete.csproj /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+
+# to disable automatic builds
+#build: off
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+# scripts to run before tests
+# before_test:
+#   - echo script1
+#   - ps: Write-Host "script1"
+
+# scripts to run after tests
+# after_test:
+
+# to run your custom scripts instead of automatic tests
+# test_script:
+#   - echo This is my custom test script
+
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+# artifacts:
+#   # pushing a single file
+#   - path: test.zip
