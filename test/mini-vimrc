@@ -1,0 +1,14 @@
+set nocompatible
+filetype off
+
+" Assuming that plugins are installed under ~/.vim/bundle
+
+" Dependency to vader.vim
+set rtp^=~/vimfiles/bundle/vader.vim
+
+" The plugin under test
+set rtp^=~/vimfiles/bundle/poshcomplete-vim
+
+" Enable loading plugins and indent files for specific file types
+filetype plugin indent on
+
