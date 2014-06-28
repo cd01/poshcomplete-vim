@@ -9,8 +9,7 @@ version: 1.0.{build}
 branches:
   # whitelist
   only:
-    # - master
-    - if_py2
+    - dev
 
   # blacklist
   except:
