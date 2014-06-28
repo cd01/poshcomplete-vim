@@ -57,17 +57,29 @@ build_script:
 #---------------------------------#
 
 # scripts to run before tests
-# before_test:
-#   - echo script1
-#   - ps: Write-Host "script1"
+before_test:
+  #- python --version
+  #- where python
+  #- set PYTHONHOME=c:\Python27
+  #- set PYTHONPATH=c:\Python27\Lib
 
+  #- ps: Invoke-WebRequest http://files.kaoriya.net/goto/vim74w64 -OutFile .\vim.zip
+  #- ps: Add-Type -AssemblyName "System.IO.Compression.FileSystem"
+  #- ps: '[System.IO.Compression.Zipfile]::ExtractToDirectory($(Convert-Path ".\vim.zip"), $(Convert-Path ".\"))'
+
+  #- git clone https://github.com/junegunn/vader.vim.git
+
+  #- ps: Start-Process .\PoshComplete\PoshComplete\bin\Release\PoshComplete.exe
+  #- netsh http add urlacl url=http://+:1234/ user=Everyone
+  #- ps: Invoke-WebRequest http://localhost:1234/poshcomplete/get`
+  
 # scripts to run after tests
-# after_test:
+after_test:
+  #- ps: kill -name PoshComplete
 
 # to run your custom scripts instead of automatic tests
-# test_script:
-#   - echo This is my custom test script
-
+test_script:
+  #- ps: .\vim74-kaoriya-win64\vim.exe -Nu .\test\appveyor-vimrc -c 'Vader! test/*.vader' > $null
 
 #---------------------------------#
 #      artifacts configuration    #
@@ -76,3 +88,4 @@ build_script:
 # artifacts:
 #   # pushing a single file
 #   - path: test.zip
+
