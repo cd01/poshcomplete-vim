@@ -1,6 +1,4 @@
-# poshcomplete-vim
-
-[![Build status](https://ci.appveyor.com/api/projects/status/irr5v3thpcsrtxcp)](https://ci.appveyor.com/project/cd01/poshcomplete-vim)
+# poshcomplete-vim [![Build status](https://ci.appveyor.com/api/projects/status/irr5v3thpcsrtxcp)](https://ci.appveyor.com/project/cd01/poshcomplete-vim)
 
 omnifunc for PowerShell in Vim
 
