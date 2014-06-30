@@ -78,6 +78,7 @@ after_test:
 
 # to run your custom scripts instead of automatic tests
 test_script:
+  - ps: Start-Process .\PoshComplete\PoshComplete\bin\Release\PoshComplete.exe
   - cmd: bash.exe test\test.sh
 
 #---------------------------------#
@@ -85,6 +86,6 @@ test_script:
 #---------------------------------#
 
 # artifacts:
-#   # pushing a single file
-#   - path: test.zip
+  # pushing a single file
+  - path: PoshComplete_{version}.zip
 
