@@ -4,10 +4,10 @@ filetype off
 " Assuming that plugins are installed under ~/.vim/bundle
 
 " Dependency to vader.vim
-set rtp^=$APPVEYOR_BUILD_FOLDER/vader.vim
+set rtp^=C:\projects\poshcomplete-vim\vader.vim
 
 " The plugin under test
-set rtp^=$APPVEYOR_BUILD_FOLDER
+set rtp^=C:\projects\poshcomplete-vim
 
 " Enable loading plugins and indent files for specific file types
 filetype plugin indent on
