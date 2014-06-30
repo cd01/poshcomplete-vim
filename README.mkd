@@ -11,12 +11,13 @@ omnifunc for PowerShell in Vim
 
 ```ps1
 netsh http add urlacl url=http://+:1234/ user=Everyone
+
 cd $(Join-Path $env:USERPROFILE "vimfiles\bundle")
-git clone git@github.com:cd01/poshcomplete-vim.git
+git clone git@github.com:cd01/poshcomplete-vim.git 
 
 cd poshcomplete-vim
-nuget restore PoshComplete/PoshComplete.sln
-msbuild "PoshComplete/PoshComplete.sln"
+nuget restore .\PoshComplete\PoshComplete.sln
+msbuild .\PoshComplete\PoshComplete.sln
 
 Write-Host "autocmd FileType ps1 :setl omnifunc=poshcomplete#CompleteCommand" >> $(Join-Path $env:USERPROFILE "_vimrc")
 ```
