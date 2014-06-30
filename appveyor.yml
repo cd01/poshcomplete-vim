@@ -86,5 +86,5 @@ test_script:
 
 # artifacts:
   # pushing a single file
-  - path: PoshComplete_$(version).zip
+  - path: PoshComplete.zip
 
