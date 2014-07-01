@@ -1,0 +1,3 @@
+[submodule "server"]
+	path = server
+	url = git@github.com:cd01/poshcomplete-server.git
