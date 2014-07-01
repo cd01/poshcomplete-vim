@@ -86,5 +86,6 @@ test_script:
 
 artifacts:
   - path: PoshComplete\PoshComplete\bin\Release
-    name: PoshCompleteServer-{version}.zip
+    name: PoshCompleteServer
+    type: zip
 
