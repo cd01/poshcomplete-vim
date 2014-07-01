@@ -87,4 +87,7 @@ test_script:
 artifacts:
   # pushing a single file
   - path: PoshComplete.zip
+artifacts:
+  - path: PoshComplete\PoshComplete\bin\Release
+    name: PoshCompleteServer-{version}.zip
 
