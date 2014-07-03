@@ -43,6 +43,12 @@ echo has('python')
 ```
 
 
+## Special Thanks to contribute
+
+* [sgur](https://github.com/sgur)
+
+
 ## Licence
 
 MIT
+
