@@ -1,6 +1,7 @@
 # poshcomplete-vim
 
-omnifunc for PowerShell in Vim
+omnifunc for PowerShell in Vim  
+Inspired by [Omnisharp](https://github.com/nosami/Omnisharp)
 
 ![screencast](http://gifzo.net/BVFaroOrqAx.gif)
 
@@ -43,7 +44,7 @@ echo has('python')
 ```
 
 
-## Special Thanks to contribute
+## Thanks
 
 * [sgur](https://github.com/sgur)
 
