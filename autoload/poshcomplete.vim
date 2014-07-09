@@ -1,4 +1,4 @@
-let s:script_path = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
+let s:scriptdir = expand('<sfile>:p:h')
 
 function! poshcomplete#CompleteCommand(findstart, base)
     if a:findstart
@@ -20,6 +20,14 @@ function! poshcomplete#CompleteCommand(findstart, base)
 
         return pyeval('complete(vim.eval("currentline"))')
     endif
+endfunction
+
+function! poshcomplete#StartServer()
+    let cmd = system(s:scriptdir + "../server/PoshComplete/bin/Release/PoshComplete.exe")
+    echo cmd
+endfunction
+
+function! poshcomplete#StopServer()
 endfunction
 
 " vim:set et ts=4 sts=0 sw=4 ff=unix:
