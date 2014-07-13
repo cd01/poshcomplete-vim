@@ -1,0 +1,25 @@
+language: vim
+
+branches:
+    only:
+        - dev
+
+before_script: |
+    git clone https://github.com/junegunn/vader.vim.git
+    git submodule init
+    git submodule update
+    wget http://headsigned.com/download/running-nuget-command-line-on-linux/Microsoft.Build.zip -O server/Microsoft.Build.zip
+    unzip ./server/Microsoft.Build.zip -d ./server
+    wget http://nuget.org/nuget.exe -O ./server/nuget.exe
+    mono NuGet.exe restore server/PoshComplete.sln
+    xbuild server/PoshComplete/PoshComplete.csproj.ubuntu
+    mono server/PoshComplete/bin/Debug/PoshComplete.exe 
+
+script: |
+    vim -Nu <(cat << VIMRC
+    set rtp+=vader.vim
+    set rtp+=.
+    VIMRC) -c 'Vader! test/*' > /dev/null
+
+after_script: |
+    curl http://localhost:1234/stop
