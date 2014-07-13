@@ -1,4 +1,4 @@
-language: c
+language: vim
 
 env:
     global:
@@ -13,8 +13,8 @@ before_script: |
     sudo apt-get install -qq mono-devel > /dev/null
     mozroots --import --sync
     git clone https://github.com/junegunn/vader.vim.git
-    xbuild server/PoshComplete/PoshComplete.csproj.ubuntu
-    mono server/PoshComplete/bin/Debug/PoshComplete.exe 
+    xbuild ./server/PoshComplete/PoshComplete.csproj.ubuntu
+    mono ./server/PoshComplete/bin/Debug/PoshComplete.exe 
 
 script: |
     vim -Nu <(cat << VIMRC
