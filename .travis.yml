@@ -18,6 +18,9 @@ before_script: |
     rm -rf ./server
     git clone https://github.com/junegunn/vader.vim
     git clone https://github.com/cd01/poshcomplete-server.git server
+    wget http://headsigned.com/download/running-nuget-command-line-on-linux/Microsoft.Build.zip -O server/Microsoft.Build.zip
+    unzip ./server/Microsoft.Build.zip -d ./server
+    wget http://nuget.org/nuget.exe -O ./server/nuget.exe
     xbuild ./server/PoshComplete/PoshComplete.csproj.ubuntu
     mono ./server/PoshComplete/bin/Debug/PoshComplete.exe 
 
