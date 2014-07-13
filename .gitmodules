@@ -1,6 +1,6 @@
 [submodule "server"]
 	path = server
-	url = git@github.com:cd01/poshcomplete-server.git
+	url = https://github.com/cd01/poshcomplete-server.git
 [submodule "cmd"]
 	path = cmd
 	url = https://github.com/cd01/CallCmd.git
