@@ -15,9 +15,9 @@ before_script: |
     sudo apt-get update -qq > /dev/null
     sudo apt-get install -qq mono-devel > /dev/null
     mozroots --import --sync
-    git submodule update --init --recursive
     git clone https://github.com/junegunn/vader.vim
-    ls ./server
+    git clone https://github.com/cd01/poshcomplete-server.git server
+    rm -rf ./server
     xbuild ./server/PoshComplete/PoshComplete.csproj.ubuntu
     mono ./server/PoshComplete/bin/Debug/PoshComplete.exe 
 
