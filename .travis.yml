@@ -21,6 +21,7 @@ before_script: |
     wget http://headsigned.com/download/running-nuget-command-line-on-linux/Microsoft.Build.zip -O server/Microsoft.Build.zip
     unzip ./server/Microsoft.Build.zip -d ./server
     wget http://nuget.org/nuget.exe -O ./server/nuget.exe
+    mono ./server/nuget.exe restore ./server/PoshComplete.sln
     xbuild ./server/PoshComplete/PoshComplete.csproj.ubuntu
     mono ./server/PoshComplete/bin/Debug/PoshComplete.exe 
 
