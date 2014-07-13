@@ -12,7 +12,10 @@ before_script: |
     sudo apt-get update -qq > /dev/null
     sudo apt-get install -qq mono-devel > /dev/null
     mozroots --import --sync
-    git clone https://github.com/junegunn/vader.vim.git
+    git clone https://github.com/junegunn/vader.vim.
+    ls ./server
+    pwd
+    ls
     xbuild ./server/PoshComplete/PoshComplete.csproj.ubuntu
     mono ./server/PoshComplete/bin/Debug/PoshComplete.exe 
 
