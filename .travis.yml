@@ -26,7 +26,7 @@ before_script: |
     wget http://nuget.org/nuget.exe -O ./server/nuget.exe
     mono ./server/nuget.exe restore ./server/PoshComplete.sln
     xbuild ./server/PoshComplete/PoshComplete.csproj.ubuntu
-    mono ./server/PoshComplete/bin/Debug/PoshComplete.exe 
+    mono ./server/PoshComplete/bin/Debug/PoshComplete.exe &
 
 script: |
     vim -Nu <(cat << VIMRC
