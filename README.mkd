@@ -37,7 +37,7 @@ foobar`<C-X>``<C-O>`
 ## Requirements
 
 * Windows
-* vimproc
+* [vimproc](https://github.com/Shougo/vimproc.vim/downloads)
 * Python 2.x
 
 ``` viml
