@@ -23,11 +23,13 @@ function! poshcomplete#CompleteCommand(findstart, base)
 endfunction
 
 function! poshcomplete#StartServer()
-    let cmd = system(s:scriptdir + "../server/PoshComplete/bin/Release/PoshComplete.exe")
-    echo cmd
+    call vimproc#system_gui(substitute(s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe", '\\', '\/', 'g'))
+    call pyeval('complete("test")') " Initial complete is slow
 endfunction
 
 function! poshcomplete#StopServer()
+    let cmd = system('powershell -NoProfile -ExecutionPolicy unrestricted -Command "& { kill -name PoshComplete }"')
+    echo cmd
 endfunction
 
 " vim:set et ts=4 sts=0 sw=4 ff=unix:
