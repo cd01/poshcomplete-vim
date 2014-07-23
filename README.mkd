@@ -1,0 +1,55 @@
+# poshcomplete-vim
+
+omnifunc for PowerShell in Vim  
+Inspired by [Omnisharp](https://github.com/nosami/Omnisharp)
+
+![screencast](http://gifzo.net/BVFaroOrqAx.gif)
+
+
+## Installation
+
+```ps1
+netsh http add urlacl url=http://+:1234/ user=Everyone
+
+cd $(Join-Path $env:USERPROFILE "vimfiles\bundle")
+git clone git@github.com:cd01/poshcomplete-vim.git 
+
+cd poshcomplete-vim
+nuget restore .\PoshComplete\PoshComplete.sln
+msbuild .\PoshComplete\PoshComplete.sln
+
+Write-Host "autocmd FileType ps1 :setl omnifunc=poshcomplete#CompleteCommand" >> $(Join-Path $env:USERPROFILE "_vimrc")
+```
+
+### Install Python
+
+* install python 2.7.x
+* echo has('python') => 1
+
+
+## Usage
+
+* Run `PoshComplete/PoshComplete/bin/Release/PoshComplete.exe`
+
+foobar`<C-X>``<C-O>`
+
+
+## Requirements
+
+* Windows
+* Python 2.x
+
+``` viml
+echo has('python')
+```
+
+
+## Thanks
+
+* [sgur](https://github.com/sgur)
+
+
+## Licence
+
+MIT
+

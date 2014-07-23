@@ -1,0 +1,4 @@
+[submodule "server"]
+	path = server
+	url = https://github.com/cd01/poshcomplete-vim
+    ignore = dirty
