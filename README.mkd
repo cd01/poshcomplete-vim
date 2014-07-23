@@ -37,6 +37,7 @@ foobar`<C-X>``<C-O>`
 ## Requirements
 
 * Windows
+* vimproc
 * Python 2.x
 
 ``` viml
