@@ -5,6 +5,6 @@ import json
 
 
 def complete(arg):
-    json_text = urllib.urlopen("http://localhost:1234/poshcomplete/" + arg).read()
+    json_text = urllib.urlopen("http://localhost:1234/poshcomplete/" + arg, proxies={}).read()
     return json.loads(json_text)
 
