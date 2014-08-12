@@ -36,7 +36,7 @@ endfunction
 
 function! poshcomplete#StartServer()
     echo substitute(s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe", '\\', '\/', 'g')
-    call vimproc#system_gui("powershell -NoProfile -ExecutionPolicy unrestricted -Command 'Start-Process " . s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe -NoNewWindow'")
+    call vimproc#system_gui("powershell -NoProfile -ExecutionPolicy unrestricted -Command 'Start-Process " . s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe -WindowStyle Hidden'")
     let res = webapi#http#get("http://localhost:1234/poshcomplete/test", {}, {}, '--no-proxy')
 endfunction
 
