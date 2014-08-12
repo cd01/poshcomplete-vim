@@ -1,2 +1,0 @@
-* require `junegunn/vader.vim`
-
