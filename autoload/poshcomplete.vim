@@ -34,12 +34,6 @@ function! poshcomplete#CompleteCommand(findstart, base)
     endif
 endfunction
 
-function! poshcomplete#StartServer()
-    echo substitute(s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe", '\\', '\/', 'g')
-    call vimproc#system_gui(substitute(s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe", '\\', '\/', 'g'))
-    let res = webapi#http#get("http://localhost:1234/poshcomplete/test", {}, {}, '--no-proxy')
-endfunction
-
 function! poshcomplete#StopServer()
     call webapi#http#get("http://localhost:1234/stop", {}, {}, '--no-proxy')
 endfunction
