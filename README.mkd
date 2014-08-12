@@ -12,20 +12,12 @@ Inspired by [Omnisharp](https://github.com/nosami/Omnisharp)
 netsh http add urlacl url=http://+:1234/ user=Everyone
 
 cd $(Join-Path $env:USERPROFILE "vimfiles\bundle")
-git clone git@github.com:cd01/poshcomplete-vim.git 
+git clone https://github.com/cd01/poshcomplete-vim.git
 
 cd poshcomplete-vim
 nuget restore .\PoshComplete\PoshComplete.sln
 msbuild .\PoshComplete\PoshComplete.sln
-
-Write-Host "autocmd FileType ps1 :setl omnifunc=poshcomplete#CompleteCommand" >> $(Join-Path $env:USERPROFILE "_vimrc")
 ```
-
-### Install Python
-
-* install python 2.7.x
-* echo has('python') => 1
-
 
 ## Usage
 
@@ -36,16 +28,12 @@ foobar`<C-X>``<C-O>`
 
 ## Requirements
 
-* Windows
+* Windows 7+
+* [webapi-vim](https://github.com/mattn/webapi-vim)
 * [vimproc](https://github.com/Shougo/vimproc.vim/downloads)
-* Python 2.x
-
-``` viml
-echo has('python')
-```
 
 
-## Thanks
+## Special Thanks
 
 * [sgur](https://github.com/sgur)
 

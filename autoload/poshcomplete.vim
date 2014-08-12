@@ -1,5 +1,14 @@
 let s:scriptdir = expand('<sfile>:p:h')
 
+if executable('curl')
+    let s:noproxy_option = '--noproxy'
+elseif executable('wget')
+    let s:noproxy_option = '--no-proxy'
+else
+    let s:noproxy_option = 1
+endif
+
+
 function! poshcomplete#CompleteCommand(findstart, base)
     if a:findstart
         let line = getline('.')
@@ -18,18 +27,21 @@ function! poshcomplete#CompleteCommand(findstart, base)
             return []
         endif
 
-        return pyeval('complete(vim.eval("currentline"))')
+        " TODO: change to post method better??
+        let res = webapi#http#get("http://localhost:1234/poshcomplete/" . currentline, {}, {}, s:noproxy_option)
+
+        return webapi#json#decode(res.content)
     endif
 endfunction
 
 function! poshcomplete#StartServer()
+    echo substitute(s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe", '\\', '\/', 'g')
     call vimproc#system_gui(substitute(s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe", '\\', '\/', 'g'))
-    call pyeval('complete("test")') " Initial complete is slow
+    let res = webapi#http#get("http://localhost:1234/poshcomplete/test", {}, {}, '--no-proxy')
 endfunction
 
 function! poshcomplete#StopServer()
-    let cmd = system('powershell -NoProfile -ExecutionPolicy unrestricted -Command "& { kill -name PoshComplete }"')
-    echo cmd
+    call webapi#http#get("http://localhost:1234/stop", {}, {}, '--no-proxy')
 endfunction
 
 " vim:set et ts=4 sts=0 sw=4 ff=unix:
