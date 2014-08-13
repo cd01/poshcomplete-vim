@@ -1,0 +1,83 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# version format
+version: 0.1.{build}
+
+# branches to build
+branches:
+  # whitelist
+  only:
+    - master
+    - dev
+    - appveyor-test
+
+  # blacklist
+  except:
+    - gh-pages
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Operating system (build VM template)
+os: Windows Server 2012
+
+# scripts that are called at very beginning, before repo cloning
+init:
+  - git config --global core.autocrlf input
+
+# clone directory
+clone_folder: c:\projects\poshcomplete-server
+
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+platform: Any CPU
+configuration: Release
+
+# scripts to run before build
+before_build:
+  - cmd: git clone --quiet https://github.com/cd01/poshcomplete-server.git server
+  - cmd: nuget restore .\server\PoshComplete.sln
+  - cmd: netsh http add urlacl url=http://+:1234/ user=Everyone
+
+# scripts to run after build
+# after_build:
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+  - cmd: msbuild .\server\PoshComplete.sln /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+# scripts to run before tests
+before_test:
+  - ps: Add-Type -AssemblyName "System.IO.Compression.FileSystem"
+
+  # Install kaoriya vim
+  - ps: Invoke-WebRequest http://files.kaoriya.net/goto/vim74w64 -OutFile .\vim.zip
+  - ps: '[System.IO.Compression.Zipfile]::ExtractToDirectory($(Convert-Path ".\vim.zip"), $(Convert-Path ".\"))'
+
+  # Install vimproc
+  - cmd: git clone --quiet https://github.com/Shougo/vimproc.vim.git vimproc
+  - ps: Invoke-WebRequest https://github.com/downloads/Shougo/vimproc.vim/vimproc_win64-ver.7.1.zip -OutFile .\vimproc.zip
+  - ps: '[System.IO.Compression.Zipfile]::ExtractToDirectory($(Convert-Path ".\vimproc.zip"), $(Convert-Path ".\"))'
+  - ps: Move-Item .\vimproc_win64.dll .\vimproc\autoload
+
+  - cmd: git clone --quiet https://github.com/mattn/webapi-vim.git
+
+  - cmd: git clone --quiet https://github.com/thinca/vim-themis.git themis
+  - ps: $Env:THEMIS_VIM = $(Convert-Path '.\vim74-kaoriya-win64\vim.exe')
+  - ps: Invoke-Expression $($Env:THEMIS_VIM + ' --version')
+
+# to run your custom scripts instead of automatic tests
+test_script:
+  - cmd: .\themis\bin\themis.bat -r
+
