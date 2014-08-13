@@ -4,4 +4,8 @@ PoshComplete/PoshComplete/bin
 PoshComplete/PoshComplete/obj
 PoshComplete/packages/*
 !PoshComplete/packages/repositories.config
+webapi-vim/
+vimproc/
+vimproc.zip
+vim-themis/
 

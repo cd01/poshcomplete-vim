@@ -7,7 +7,9 @@ function! s:poshcomplete.get_childitem()
     setlocal omnifunc=poshcomplete#CompleteCommand
     call poshcomplete#StartServer()
 
-    sleep 10
+    if exists("$APPVEYOR_BUILD_FOLDER")
+        sleep 5
+    endif
 
     %delete
     normal AGet-ChildIt

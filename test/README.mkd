@@ -1,0 +1,15 @@
+``` ps1
+cd path/to/poshcomplete-vim
+
+git clone https://github.com/thinca/vim-themis.git
+git clone https://github.com/mattn/webapi-vim.git
+
+git clone https://github.com/Shougo/vimproc.vim.git
+Invoke-WebRequest https://github.com/downloads/Shougo/vimproc.vim/vimproc_win64-ver.7.1.zip -OutFile .\vimproc.zip
+[System.IO.Compression.Zipfile]::ExtractToDirectory($(Convert-Path ".\vimproc.zip"), $(Convert-Path ".\"))
+Move-Item .\vimproc_win64.dll .\vimproc\autoload
+
+cls
+.\vim-themis\bin\themis.bat -r
+```
+
