@@ -1,14 +1,5 @@
 let s:scriptdir = expand('<sfile>:p:h')
 
-if executable('curl')
-    let s:noproxy_option = '--noproxy'
-elseif executable('wget')
-    let s:noproxy_option = '--no-proxy'
-else
-    let s:noproxy_option = 1
-endif
-
-
 function! poshcomplete#CompleteCommand(findstart, base)
     if a:findstart
         let line = getline('.')
@@ -27,9 +18,8 @@ function! poshcomplete#CompleteCommand(findstart, base)
             return []
         endif
 
-        " TODO: change to post method better??
-        let res = webapi#http#get("http://localhost:" . g:PoshComplete_Port . "/poshcomplete/" . currentline, {}, {}, s:noproxy_option)
-
+        let buffer_text = join(add(getline(1, line('.') - 1), currentline), ';')
+        let res = webapi#http#post("http://localhost:" . g:PoshComplete_Port . "/poshcomplete/", {"text": buffer_text}, {})
         return webapi#json#decode(res.content)
     endif
 endfunction
