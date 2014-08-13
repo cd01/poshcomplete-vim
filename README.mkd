@@ -3,7 +3,7 @@
 omnifunc for PowerShell in Vim  
 Inspired by [Omnisharp](https://github.com/nosami/Omnisharp)
 
-![screencast](http://gifzo.net/BVFaroOrqAx.gif)
+![screencast](https://raw.githubusercontent.com/cd01/poshcomplete-vim/master/screencast.gif)
 
 
 ## Installation
@@ -18,6 +18,7 @@ cd poshcomplete-vim
 nuget restore .\PoshComplete\PoshComplete.sln
 msbuild .\PoshComplete\PoshComplete.sln
 ```
+
 
 ## Usage
 
