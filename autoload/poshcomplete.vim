@@ -28,7 +28,7 @@ function! poshcomplete#CompleteCommand(findstart, base)
         endif
 
         " TODO: change to post method better??
-        let res = webapi#http#get("http://localhost:1234/poshcomplete/" . currentline, {}, {}, s:noproxy_option)
+        let res = webapi#http#get("http://localhost:" . g:PoshComplete_Port . "/poshcomplete/" . currentline, {}, {}, s:noproxy_option)
 
         return webapi#json#decode(res.content)
     endif
@@ -39,16 +39,16 @@ function! poshcomplete#StartServer()
     silent! let is_vimproc = vimproc#version()
 
     if is_vimproc
-        call vimproc#system_gui("powershell -NoProfile -ExecutionPolicy unrestricted -Command 'Start-Process " . s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe -WindowStyle Hidden'")
+        call vimproc#system_gui("powershell -NoProfile -ExecutionPolicy unrestricted -Command 'Start-Process " . s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe -ArgumentList \"-p " . g:PoshComplete_Port . "\" -WindowStyle Hidden'")
     else
         echo "Please install vimproc"
     endif
 
-    let res = webapi#http#get("http://localhost:1234/poshcomplete/test", {}, {}, '--no-proxy')
+    let res = webapi#http#get("http://localhost:" . g:PoshComplete_Port . "/poshcomplete/test", {}, {}, '--no-proxy')
 endfunction
 
 function! poshcomplete#StopServer()
-    call webapi#http#get("http://localhost:1234/stop", {}, {}, '--no-proxy')
+    call webapi#http#get("http://localhost:" . g:PoshComplete_Port . "/stop", {}, {}, '--no-proxy')
 endfunction
 
 " vim:set et ts=4 sts=0 sw=4 ff=unix:

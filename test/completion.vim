@@ -1,3 +1,4 @@
+let g:PoshComplete_Port = "1234"
 let s:poshcomplete = themis#suite('poshcomplete')
 call themis#helper('command').with(themis#helper('assert'))
 
