@@ -35,8 +35,15 @@ function! poshcomplete#CompleteCommand(findstart, base)
 endfunction
 
 function! poshcomplete#StartServer()
-    echo substitute(s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe", '\\', '\/', 'g')
-    call vimproc#system_gui("powershell -NoProfile -ExecutionPolicy unrestricted -Command 'Start-Process " . s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe -WindowStyle Hidden'")
+    let is_vimproc = 0
+    silent! let is_vimproc = vimproc#version()
+
+    if is_vimproc
+        call vimproc#system_gui("powershell -NoProfile -ExecutionPolicy unrestricted -Command 'Start-Process " . s:scriptdir . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe -WindowStyle Hidden'")
+    else
+        echo "Please install vimproc"
+    endif
+
     let res = webapi#http#get("http://localhost:1234/poshcomplete/test", {}, {}, '--no-proxy')
 endfunction
 
