@@ -92,7 +92,7 @@ after_test:
 #---------------------------------#
 artifacts:
   - path: .\
-    name: pochcomplete-vim
+    name: poshcomplete-vim
     type: zip
 
 # vim:set sts=2 sw=2:
