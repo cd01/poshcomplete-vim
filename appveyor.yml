@@ -85,6 +85,7 @@ after_test:
   - ps: Remove-Item -Recurse -Force .\vimproc
   - ps: Remove-Item -Recurse -Force .\webapi-vim
   - ps: Remove-Item -Recurse -Force .\vim74-kaoriya-win64
+  - ps: Remove-Item .\*.zip
 
 #---------------------------------#
 # artifacts configuration #
