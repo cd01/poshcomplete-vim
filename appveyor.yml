@@ -80,3 +80,19 @@ before_test:
 test_script:
   - cmd: .\themis\bin\themis.bat -r
 
+after_test:
+  - ps: Remove-Item -Recurse .\themis
+  - ps: Remove-Item -Recurse .\vimproc
+  - ps: Remove-Item -Recurse .\webapi-vim
+  - ps: Remove-Item -Recurse .\vim74-kaoriya-win64
+
+#---------------------------------#
+# artifacts configuration #
+#---------------------------------#
+artifacts:
+  - path: .\
+    name: pochcomplete-vim
+    type: zip
+
+# vim:set sts=2 sw=2:
+
