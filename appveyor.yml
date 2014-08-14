@@ -61,7 +61,7 @@ before_test:
   - ps: Add-Type -AssemblyName "System.IO.Compression.FileSystem"
 
   # Install kaoriya vim
-  - ps: Invoke-WebRequest http://files.kaoriya.net/goto/vim74w64 -OutFile .\vim.zip
+  - ps: Invoke-WebRequest http://files.kaoriya.net/vim/vim74-kaoriya-win64.zip -OutFile .\vim.zip
   - ps: '[System.IO.Compression.Zipfile]::ExtractToDirectory($(Convert-Path ".\vim.zip"), $(Convert-Path ".\"))'
 
   # Install vimproc
