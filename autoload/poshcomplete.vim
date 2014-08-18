@@ -18,8 +18,14 @@ function! poshcomplete#CompleteCommand(findstart, base)
             return []
         endif
 
+        if executable('curl')
+            let s:noproxy_option = 'POST --noproxy localhost'
+        else
+            let s:noproxy_option = 'POST'
+        endif
+
         let buffer_text = join(add(getline(1, line('.') - 1), currentline), ';')
-        let res = webapi#http#post("http://localhost:" . g:PoshComplete_Port . "/poshcomplete/", {"text": buffer_text}, {})
+        let res = webapi#http#post("http://localhost:" . g:PoshComplete_Port . "/poshcomplete/", {"text": buffer_text}, {}, s:noproxy_option)
         return webapi#json#decode(res.content)
     endif
 endfunction
