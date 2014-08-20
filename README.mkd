@@ -8,12 +8,13 @@ Inspired by [Omnisharp](https://github.com/nosami/Omnisharp)
 
 ## Installation
 
-1. `netsh http add urlacl url=http://+:1234/ user=Everyone`
+1. `netsh http add urlacl url=http://+:1234/ user=Everyone` with elevating UAC
 2. Download poshcomplete-vim from [LATEST BUILD in AppVeyor](https://ci.appveyor.com/project/cd01/poshcomplete-vim/build/artifacts)
 3. Extract poshcomplete-vim.zip to `~\vimfiles\bundle\poshcomplete-vim`
-4. Add `~\vimfiles\bundle\poshcomplete-vim` to runtimepath
-5. Install [webapi-vim](https://github.com/mattn/webapi-vim)
-6. Install [vimproc](https://github.com/Shougo/vimproc.vim/downloads)
+4. Run `~\vimfiles\bundle\poshcomplete-vim\server\PoshComplete\bin\Release\PoshComplete.exe` and Turn off Security Warning
+5. Add `~\vimfiles\bundle\poshcomplete-vim` to runtimepath
+6. Install [webapi-vim](https://github.com/mattn/webapi-vim)
+7. Install [vimproc](https://github.com/Shougo/vimproc.vim/downloads)
 
 
 ## Usage
