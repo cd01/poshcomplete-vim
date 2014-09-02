@@ -37,10 +37,10 @@ function! poshcomplete#StartServer()
 
     if is_vimproc
         call vimproc#system_gui("powershell -NoProfile -ExecutionPolicy unrestricted -Command 'Start-Process "
-\                               . s:scriptdir
-\                               . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe -ArgumentList \"-p "
-\                               . g:PoshComplete_Port
-\                               . "\" -WindowStyle Hidden'")
+                                \ . s:scriptdir
+                                \ . "\\..\\server\\PoshComplete\\bin\\Release\\PoshComplete.exe -ArgumentList \"-p "
+                                \ . g:PoshComplete_Port
+                                \ . "\" -WindowStyle Hidden'")
     else
         echo "Please install vimproc"
     endif
