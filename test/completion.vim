@@ -17,7 +17,7 @@ function! s:poshcomplete.after()
     call poshcomplete#StopServer()
 endfunction
 
-function! s:poshcomplete.get_childitem()
+function! s:poshcomplete.complete_cmdlet()
     %delete
     normal AGet-ChildIt
 
